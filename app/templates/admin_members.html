@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rakamin | Admin | Members</title>
+</head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                      <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Rakamin | Admin</a>
+                      </div>
+                      <ul class="nav navbar-nav">
+                        <li class="active"><a href="/admin/members">Members</a></li>
+                        <li><a href="/admin/rooms">Rooms</a></li>
+                      </ul>
+
+                      <ul class="nav navbar-nav navbar-right">
+                        <li id="logoutid"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                      </ul>
+                    </div>
+                </nav>
+
+                <div>
+                  <table class="table" id="tblMembers">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Join Date (mm-dd-yyyy)</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                  </table>
+                </div>
+
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='js/apps/admin_members.js') }}"></script>
+</html>

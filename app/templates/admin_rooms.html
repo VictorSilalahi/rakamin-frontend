@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rakamin | Admin | Rooms</title>
+</head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                      <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Rakamin | Admin</a>
+                      </div>
+                      <ul class="nav navbar-nav">
+                        <li><a href="/admin/members">Members</a></li>
+                        <li class="active"><a href="/admin/rooms">Rooms</a></li>
+                      </ul>
+
+                      <ul class="nav navbar-nav navbar-right">
+                        <li id="logoutid"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                      </ul>
+                    </div>
+                </nav>
+
+                <div>
+                  <div class="form-inline">
+                    <label for="txtRoomName">Room Name</label>
+                    <input type="text" id="txtRoomName" class="form-control form-inline">
+                    <button type="button" class="btn btn-info form-control form-inline btn-input-room">Input New Room</button>
+                  </div>
+                </div>
+
+                <div>
+                  <table class="table" id="tblRooms">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Room Name</th>
+                        <th scope="col">Members</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                  </table>                  
+                </div>
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+  <div class="modal fade" id="modalSetMember" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              
+              <div class="list-group" id="divListMember">
+                <label class="list-group-item">
+                  <input class="form-check-input me-1" type="checkbox" value="">
+                  First checkbox
+                </label>
+
+              </div>
+              <input type="hidden" id="room_id" >
+            </div>
+          </div>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary btn-save-member">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='js/apps/admin_rooms.js') }}"></script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rakamin | Register</title>
+</head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Register New Chat User</h3>
+                    </div>
+                    <div class="panel-body">
+                      
+                        <form>
+                            <div class="form-group">
+                                <label for="txtName">Name:</label>
+                                <input type="text" class="form-control" id="txtName">
+                              </div>
+                            <div class="form-group">
+                              <label for="txtEmail">Email address:</label>
+                              <input type="email" class="form-control" id="txtEmail">
+                            </div>
+                            <div class="form-group">
+                              <label for="txtPwd">Password:</label>
+                              <input type="password" class="form-control" id="txtPwd1">
+                            </div>
+                            <div class="form-group">
+                              <label for="txtPwd2">Confirm Password:</label>
+                              <input type="password" class="form-control" id="txtPwd2">
+                            </div>
+
+                            
+                          </form>
+                          <button type="button" class="btn btn-default pull-left btn-cancel">Cancel</button>
+                          <button type="button" class="btn btn-warning pull-right btn-confirm">Confirm</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='js/apps/register.js') }}"></script>
+</html>
