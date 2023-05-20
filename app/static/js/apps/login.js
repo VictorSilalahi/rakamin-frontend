@@ -45,6 +45,7 @@ $(document).ready(function() {
                 // console.log(data);
                 localStorage.setItem("jwt-token", data['token']);
                 localStorage.setItem("member_id", data['data']['member_id']);
+                localStorage.setItem("username", data['data']['username']);
                 window.location.replace("http://127.0.0.1:3000/chat");
             }
         });

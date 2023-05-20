@@ -24,6 +24,7 @@ function logOut() {
 function loadRooms(token) {
 
     var member_id = localStorage.getItem("member_id");
+    var username = localStorage.getItem("username");
 
     $.ajax({
         url:"http://127.0.0.1:5000/api/member/rooms",
@@ -50,14 +51,21 @@ function loadRooms(token) {
             }           
         }, 
         success: function(data) {
+
             var dat = data['data'];
             var str = "";
+            var rooms = [];
             for (var i=0; i<dat.length; i++) {
                 str = str + "<li class='list-group-item d-flex justify-content-between align-items-center' id='"+dat[i][0]+"'>";
                 str = str + "<h4><b>" +dat[i][1]+"</b>";
                 str = str + "<span class='badge bagde-spill badge-secondary'>0</span></li></h4>";
+                rooms.push(dat[i][1]);
             }
             $("#groupList").html(str);
+
+            const socketio = io.connect("http://127.0.0.1:5000");
+
+            
         }
     });        
 
