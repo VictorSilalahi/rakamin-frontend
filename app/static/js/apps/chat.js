@@ -1,5 +1,6 @@
 
 var token = null;
+var sio;
 
 $(document).ready(function() {
     
@@ -18,6 +19,7 @@ $(document).ready(function() {
 
 function logOut() {
     localStorage.removeItem("jwt-token");
+    sio.close();
     window.location.replace("http://127.0.0.1:3000");
 }
 
@@ -57,15 +59,30 @@ function loadRooms(token) {
             var rooms = [];
             for (var i=0; i<dat.length; i++) {
                 str = str + "<li class='list-group-item d-flex justify-content-between align-items-center' id='"+dat[i][0]+"'>";
-                str = str + "<h4><b>" +dat[i][1]+"</b>";
-                str = str + "<span class='badge bagde-spill badge-secondary'>0</span></li></h4>";
+                str = str + "<h4><b>"+dat[i][1]+"</b>";
+                str = str + "<span class='badge badge-error'></span></li></h4>";
                 rooms.push(dat[i][1]);
             }
             $("#groupList").html(str);
 
-            const socketio = io.connect("http://127.0.0.1:5000");
+            sio = io.connect("http://127.0.0.1:5000");
 
-            
+            sio.emit("join_room", {
+                room: rooms,
+                member_id: member_id,
+                username: username
+            });
+
+            sio.on("join_room_announcement", function(data) {
+                console.log(data);
+                $(".room-list").find("li").each(function() {
+                    if ($(this).text()==data["room_name"]) {
+                        $(this).find(".badge").html("<b>!</b>");
+                        
+                    }
+                });
+            });
+        
         }
     });        
 
@@ -145,7 +162,15 @@ function messageAdd(token) {
 
 }
 
+$(document).on("click", ".list-group-item", function() {
+    $(".list-group-item").removeClass("active");
+    $(this).addClass("active");
+    var c = $(this).find(".badge");
+    c.text("");
 
+    // tampilkan percakapan di dalam room yg dipilih
+    
+});
 
 
 
