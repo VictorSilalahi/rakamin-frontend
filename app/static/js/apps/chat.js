@@ -55,8 +55,9 @@ function logOut() {
     localStorage.removeItem("jwt-token");
 
     var all_rooms = findAllRoom();
-    
+
     for (var i=0; i<all_rooms.length; i++) {
+        console.log(all_rooms[i]);
         sio.emit("left_room", {
             "room_name": all_rooms[i],
             "username": localStorage.getItem("username")
@@ -148,31 +149,35 @@ function loadRooms(token) {
         }
     });        
 
-
 }
+
 function findRoomInList(room_name, event_type, username, msg) {
 
     $(".room-list").find("li").each(function() {
         var temp_room_name = $(this).text();
         var li_room_name;
+      
         if (temp_room_name.includes("!")==true) {
             li_room_name = temp_room_name.replace("!","");
         } else {
             li_room_name = temp_room_name;
         }
+
         if (li_room_name==room_name) {
             $(this).find(".badge").html("<b>!</b>");
 
             var childDiv = document.createElement("div");
+            
             if (event_type=="join_room") {
-                childDiv.innerHTML = "<i><b>"+username+ "</b> has joined the room.</i>";
+                childDiv.innerHTML = "<div style='color:blue'><i><b>["+username+ "]</b> has joined the room.</i></div>";
             }
             if (event_type=="message") {
                 childDiv.innerHTML = "<b>["+username+ "]</b>&nbsp;"+msg;
             }
             if (event_type=="left_room") {
-                childDiv.innerHTML = msg;
+                childDiv.innerHTML = "<div style='color:red'><i><b>["+username+ "]</b> has left the room.</i></div>";
             }
+        
             $("#"+room_name).append(childDiv);
             $("#"+room_name).scrollTop(20000);
         }
@@ -216,6 +221,7 @@ $(document).on("click", ".list-group-item", function() {
 
     $("#spanRoom").html("<b>"+choosen_room+"</b>");
     $("#"+choosen_room).show();
+    
 });
 
 function findAllRoom() {
