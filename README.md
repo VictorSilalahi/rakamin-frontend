@@ -1,6 +1,6 @@
 # Project Title
 
-Pacmann Frontend
+Rakamin Frontend
 
 ## Description
 
