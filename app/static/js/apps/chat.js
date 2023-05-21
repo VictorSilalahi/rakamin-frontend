@@ -52,6 +52,10 @@ $(document).ready(function() {
 });
 
 function logOut() {
+    const delay = millis => new Promise((resolve, reject) => {
+        setTimeout(_ => resolve(), millis)
+    });
+
     localStorage.removeItem("jwt-token");
 
     var all_rooms = findAllRoom();
@@ -62,7 +66,9 @@ function logOut() {
             "room_name": all_rooms[i],
             "username": localStorage.getItem("username")
         });
+        delay(1000);
     }
+
     sio.close();
     window.location.replace("http://127.0.0.1:3000");
 }
@@ -221,7 +227,7 @@ $(document).on("click", ".list-group-item", function() {
 
     $("#spanRoom").html("<b>"+choosen_room+"</b>");
     $("#"+choosen_room).show();
-    
+
 });
 
 function findAllRoom() {
